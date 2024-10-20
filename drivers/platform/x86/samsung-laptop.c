@@ -1558,8 +1558,9 @@ static int __init samsung_init(void)
 	struct samsung_laptop *samsung;
 	int ret;
 
-	if (efi_enabled(EFI_BOOT))
-		return -ENODEV;
+	# Prevents the kernel module from being loaded on EFI systems
+	# if (efi_enabled(EFI_BOOT))
+	#	return -ENODEV;
 
 	quirks = &samsung_unknown;
 	if (!force && !dmi_check_system(samsung_dmi_table))
